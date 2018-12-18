@@ -32,14 +32,17 @@ public class NewHandActivity extends AppCompatActivity {
 		//get the spinner from the xml.
 		Spinner dropdownGametype = findViewById(R.id.spinner2);
 		//create a list of items for the spinner.
-		String[] gametypes = new String[]{"Gametype", "Cashgame", "Tournament"};
+		String[] gametypes = new String[]{"Gametype", "Cashgame"};
 		//create an adapter to describe how the items are displayed, adapters are used in several places in android.
 		//There are multiple variations of this, but this is the basic variant.
 		ArrayAdapter<String> gametypeAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, gametypes);
 		//set the spinners adapter to the previously created one.
 		dropdownGametype.setAdapter(gametypeAdapter);
 
-		//Spinner dropdownSmallblind = findViewById(R.id.spinner3);
+		Spinner dropdownBlinds = findViewById(R.id.spinner3);
+		String[] blinds = new String[]{"Blinds", "10/10", "25/25", "50/50"};
+		ArrayAdapter<String> blindsAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, blinds);
+		dropdownBlinds.setAdapter(blindsAdapter);
 
 
 		Button selectDate;
@@ -64,7 +67,14 @@ public class NewHandActivity extends AppCompatActivity {
 							new DatePickerDialog.OnDateSetListener() {
 								@Override
 								public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-									date.setText(day + "/" + (month + 1) + "/" + year);
+									StringBuilder s = new StringBuilder();
+									s.append(day)
+											.append("/")
+											.append(month + 1)
+											.append("/")
+											.append(year);
+
+									date.setText(s.toString());
 								}
 							}, year[0], month[0], dayOfMonth[0]);
 					datePickerDialog[0].show();

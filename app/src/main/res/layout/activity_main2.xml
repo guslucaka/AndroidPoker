@@ -29,7 +29,6 @@
         android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toTopOf="@+id/spinner3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner1" />
 
@@ -43,7 +42,6 @@
         android:layout_marginBottom="337dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner2" />
 
@@ -71,10 +69,17 @@
         android:layout_below="@+id/btnDate"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
+        android:layout_marginStart="175dp"
         android:layout_marginTop="10dp"
+        android:layout_marginEnd="175dp"
+        android:layout_marginBottom="174dp"
         android:textColor="@color/colorPrimary"
         android:textSize="30sp"
-        android:textStyle="italic|bold" />
+        android:textStyle="italic|bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnDate" />
 
 
 </android.support.constraint.ConstraintLayout>

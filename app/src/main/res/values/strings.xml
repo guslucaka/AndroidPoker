@@ -8,4 +8,6 @@
     <string name="hero_hand">Hero Hand</string>
     <string name="card1">Card1</string>
     <string name="card2">Card2</string>
+    <string name="edit_players_button">Edit Players</string>
+    <string name="next_button">Next</string>
 </resources>

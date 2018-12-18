@@ -67,14 +67,9 @@ public class NewHandActivity extends AppCompatActivity {
 							new DatePickerDialog.OnDateSetListener() {
 								@Override
 								public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-									StringBuilder s = new StringBuilder();
-									s.append(day)
-											.append("/")
-											.append(month + 1)
-											.append("/")
-											.append(year);
+									String dateValue = day + "/" + (month+1) + "/" + year;
 
-									date.setText(s.toString());
+									date.setText(dateValue);
 								}
 							}, year[0], month[0], dayOfMonth[0]);
 					datePickerDialog[0].show();

@@ -4,4 +4,6 @@
     <string name="saved_hands_button">Saved Hands</string>
     <string name="settings_button">Settings</string>
     <string name="log_out_button">Log out</string>
+    <string name="select_date_button">Select a Date</string>
+
 </resources>

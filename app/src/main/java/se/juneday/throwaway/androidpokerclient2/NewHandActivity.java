@@ -1,6 +1,7 @@
 package se.juneday.throwaway.androidpokerclient2;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -50,8 +51,29 @@ public class NewHandActivity extends AppCompatActivity {
 			});
 		}
 
-		void initViews(){
+		private void onNextClick(){
+			final Button nextButton = findViewById(R.id.button_next);
+			nextButton.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					Intent intent = new Intent(NewHandActivity.this, Preflop.class);
+					startActivity(intent);
+				}
+			});
+		}
 
+		private void onEditPlayersClick(){
+			final Button editPlayersButton = findViewById(R.id.button_edit);
+			editPlayersButton.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					Intent intent = new Intent(NewHandActivity.this, EditPlayersActivity.class);
+					startActivity(intent);
+				}
+			});
+		}
+
+		void initViews(){
 			//get the spinner from the xml.
 			Spinner dropdownLocation = findViewById(R.id.spinner1);
 			//create a list of items for the spinner.
@@ -76,6 +98,9 @@ public class NewHandActivity extends AppCompatActivity {
 			date = findViewById(R.id.tvSelectedDate);
 
 			onDateButtonClick();
+			onEditPlayersClick();
+			onNextClick();
+
 		}
 
 	}

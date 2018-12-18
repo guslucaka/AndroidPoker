@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">AndroidPokerClient2</string>
+    <string name="new_hand_button">New hand</string>
+    <string name="saved_hands_button">Saved Hands</string>
+    <string name="settings_button">Settings</string>
+    <string name="log_out_button">Log out</string>
+</resources>

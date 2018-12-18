@@ -10,4 +10,6 @@
     <string name="card2">Card2</string>
     <string name="edit_players_button">Edit Players</string>
     <string name="next_button">Next</string>
+    <string name="save_players_button">Save players</string>
+
 </resources>

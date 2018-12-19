@@ -2,11 +2,13 @@ package se.juneday.throwaway.androidpokerclient2;
 
 import android.graphics.Color;
 import android.support.annotation.NonNull;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.Spinner;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
@@ -50,5 +52,18 @@ public class PreflopActivity extends AppCompatActivity {
         //set the spinners adapter to the previously created one.
         locationAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
         dropdownLocation.setAdapter(locationAdapter);
+
+        onNextClick();
+    }
+
+    private void onNextClick() {
+        final Button nextButton = findViewById(R.id.button_next);
+        nextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(PreflopActivity.this, FlopActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }

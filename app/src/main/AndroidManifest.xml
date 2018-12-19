@@ -24,7 +24,7 @@
         </intent-filter>
         </activity>
 
-        <activity android:name=".Preflop"> </activity>
+        <activity android:name=".PreflopActivity"> </activity>
         <activity android:name=".EditPlayersActivity"> </activity>
 
     </application>

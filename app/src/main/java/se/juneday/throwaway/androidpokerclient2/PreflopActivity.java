@@ -3,7 +3,7 @@ package se.juneday.throwaway.androidpokerclient2;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class Preflop extends AppCompatActivity {
+public class PreflopActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

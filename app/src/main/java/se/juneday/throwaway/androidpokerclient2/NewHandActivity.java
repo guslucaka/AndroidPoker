@@ -35,49 +35,6 @@ public class NewHandActivity extends AppCompatActivity {
 		initViews();
 		}
 
-		private void onDateButtonClick(){
-			selectDate.setOnClickListener(new View.OnClickListener() {
-				@Override
-				public void onClick(View view) {
-					calendar[0] = Calendar.getInstance();
-					year[0] = calendar[0].get(Calendar.YEAR);
-					month[0] = calendar[0].get(Calendar.MONTH);
-					dayOfMonth[0] = calendar[0].get(Calendar.DAY_OF_MONTH);
-					datePickerDialog[0] = new DatePickerDialog(NewHandActivity.this,
-							new DatePickerDialog.OnDateSetListener() {
-								@Override
-								public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-									String dateValue = day + "/" + (month+1) + "/" + year;
-									date.setText(dateValue);
-								}
-							}, year[0], month[0], dayOfMonth[0]);
-					datePickerDialog[0].show();
-				}
-			});
-		}
-
-		private void onNextClick(){
-			final Button nextButton = findViewById(R.id.button_next);
-			nextButton.setOnClickListener(new View.OnClickListener() {
-				@Override
-				public void onClick(View v) {
-					Intent intent = new Intent(NewHandActivity.this, Preflop.class);
-					startActivity(intent);
-				}
-			});
-		}
-
-		private void onEditPlayersClick(){
-			final Button editPlayersButton = findViewById(R.id.button_edit);
-			editPlayersButton.setOnClickListener(new View.OnClickListener() {
-				@Override
-				public void onClick(View v) {
-					Intent intent = new Intent(NewHandActivity.this, EditPlayersActivity.class);
-					startActivity(intent);
-				}
-			});
-		}
-
 		void initViews(){
 			//get the spinner from the xml.
 			Spinner dropdownLocation = findViewById(R.id.spinner1);
@@ -107,7 +64,51 @@ public class NewHandActivity extends AppCompatActivity {
 			onBlindSpinnerSelected();
 		}
 
-		private void onBlindSpinnerSelected(){
+	private void onDateButtonClick(){
+		selectDate.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				calendar[0] = Calendar.getInstance();
+				year[0] = calendar[0].get(Calendar.YEAR);
+				month[0] = calendar[0].get(Calendar.MONTH);
+				dayOfMonth[0] = calendar[0].get(Calendar.DAY_OF_MONTH);
+				datePickerDialog[0] = new DatePickerDialog(NewHandActivity.this,
+						new DatePickerDialog.OnDateSetListener() {
+							@Override
+							public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+								String dateValue = day + "/" + (month+1) + "/" + year;
+								date.setText(dateValue);
+							}
+						}, year[0], month[0], dayOfMonth[0]);
+				datePickerDialog[0].show();
+			}
+		});
+	}
+
+	private void onNextClick(){
+		final Button nextButton = findViewById(R.id.button_next);
+		nextButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(NewHandActivity.this, PreflopActivity.class);
+				startActivity(intent);
+			}
+		});
+	}
+
+	private void onEditPlayersClick(){
+		final Button editPlayersButton = findViewById(R.id.button_edit);
+		editPlayersButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(NewHandActivity.this, EditPlayersActivity.class);
+				startActivity(intent);
+			}
+		});
+	}
+
+
+	private void onBlindSpinnerSelected(){
 			dropdownBlinds.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 				@Override
 				public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -121,8 +122,8 @@ public class NewHandActivity extends AppCompatActivity {
 			});
 		}
 
-	@IntDef({Blinds.BLINDS_DEFAULT, Blinds.BLINDS_FIRST, Blinds.BLINDS_SECOND, Blinds.BLINDS_THIRD}) // Denotes that the annotated element is of integer type.
-	public @interface Blinds {
+	@IntDef({Blinds.BLINDS_DEFAULT, Blinds.BLINDS_FIRST, Blinds.BLINDS_SECOND, Blinds.BLINDS_THIRD})
+	public @interface Blinds {              // Denotes that the annotated element is of integer type.
 		int BLINDS_DEFAULT = 0;
 		int BLINDS_FIRST = 1;
 		int BLINDS_SECOND = 2;
@@ -132,7 +133,6 @@ public class NewHandActivity extends AppCompatActivity {
 
 	/**
 	 * Helper method to convert strings of blinds to ints.
-	 *
 	 * @return The mapped int.
 	 */
 	public int convertBlindsToInt() {
@@ -157,4 +157,4 @@ public class NewHandActivity extends AppCompatActivity {
 		return selectedBlind;
 	}
 
-	}
+}

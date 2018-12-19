@@ -12,15 +12,47 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        initViews();
+    }
 
-        final Button newHandButton = findViewById(R.id.NewHandButton);
+    void initViews(){
+        onSavedHandsClick();
+        onNewHandClick();
+        onSettingsClick();
+    }
+
+    private void onSavedHandsClick(){
+        final Button savedHandsButton = findViewById(R.id.saved_hands_button);
+        savedHandsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, SavedHandsActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+
+    private void onNewHandClick(){
+        final Button newHandButton = findViewById(R.id.new_hand_button);
         newHandButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, NewHandActivity.class);
                 startActivity(intent);
-                //test
             }
         });
     }
+
+    private void onSettingsClick(){
+        final Button settingsButton = findViewById(R.id.settings_button);
+        settingsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+
+
 }

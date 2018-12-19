@@ -15,6 +15,11 @@
     <string name="turn_textview">Turn</string>
     <string name="river_textview">River</string>
     <string name="save_hand_button">Save hand</string>
+    <string name="main_menu_button">Main menu</string>
+    <string name="savedhands_textview">Saved hands</string>
+    <string name="settings_textview">Settings</string>
+
+
 
 
 

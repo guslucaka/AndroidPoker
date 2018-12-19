@@ -8,7 +8,7 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/NewHandButton"
+        android:id="@+id/new_hand_button"
         android:layout_width="137dp"
         android:layout_height="56dp"
         android:layout_marginStart="124dp"
@@ -16,13 +16,13 @@
         android:layout_marginEnd="124dp"
         android:layout_marginBottom="15dp"
         android:text="@string/new_hand_button"
-        app:layout_constraintBottom_toTopOf="@+id/SavedHandButton"
+        app:layout_constraintBottom_toTopOf="@+id/saved_hands_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/SavedHandButton"
+        android:id="@+id/saved_hands_button"
         android:layout_width="137dp"
         android:layout_height="56dp"
         android:layout_marginStart="124dp"
@@ -30,13 +30,13 @@
         android:layout_marginEnd="124dp"
         android:layout_marginBottom="15dp"
         android:text="@string/saved_hands_button"
-        app:layout_constraintBottom_toTopOf="@+id/settingsButton"
+        app:layout_constraintBottom_toTopOf="@+id/settings_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/NewHandButton" />
+        app:layout_constraintTop_toBottomOf="@+id/new_hand_button" />
 
     <Button
-        android:id="@+id/settingsButton"
+        android:id="@+id/settings_button"
         android:layout_width="137dp"
         android:layout_height="56dp"
         android:layout_marginStart="124dp"
@@ -45,13 +45,13 @@
         android:layout_marginBottom="15dp"
         android:elevation="0dp"
         android:text= "@string/settings_button"
-        app:layout_constraintBottom_toTopOf="@+id/logOutButton"
+        app:layout_constraintBottom_toTopOf="@+id/log_out_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/SavedHandButton" />
+        app:layout_constraintTop_toBottomOf="@+id/saved_hands_button" />
 
     <Button
-        android:id="@+id/logOutButton"
+        android:id="@+id/log_out_button"
         android:layout_width="137dp"
         android:layout_height="59dp"
         android:layout_marginStart="124dp"
@@ -64,6 +64,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/settingsButton" />
+        app:layout_constraintTop_toBottomOf="@+id/settings_button" />
 
 </android.support.constraint.ConstraintLayout>

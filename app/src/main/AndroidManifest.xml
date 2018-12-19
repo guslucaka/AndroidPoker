@@ -30,6 +30,8 @@
         <activity android:name=".TurnActivity"> </activity>
         <activity android:name=".RiverActivity"> </activity>
         <activity android:name=".SavedHandsActivity"> </activity>
+        <activity android:name=".SettingsActivity"> </activity>
+
 
 
 

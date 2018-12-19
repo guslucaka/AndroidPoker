@@ -26,7 +26,7 @@ public class PreflopActivity extends AppCompatActivity {
         //get the spinner from the xml.
         Spinner dropdownLocation = findViewById(R.id.spinner1);
         //create a list of items for the spinner.
-        String[] players = new String[]{"Players", "Erik", "Lucas", "Sven"};
+        String[] players = new String[]{"Player", "Erik", "Lucas", "Sven"};
         //create an adapter to describe how the items are displayed.
         ArrayAdapter<String> locationAdapter = new ArrayAdapter<String>(
                 this, android.R.layout.simple_spinner_dropdown_item, players) {
@@ -34,6 +34,7 @@ public class PreflopActivity extends AppCompatActivity {
             public boolean isEnabled(int position){
                 return position != 0;
             }
+
             @Override
             public View getDropDownView(int position, View convertView,
                                         @NonNull ViewGroup parent) {

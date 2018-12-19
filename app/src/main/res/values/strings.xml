@@ -15,10 +15,7 @@
     <string name="turn_textview">Turn</string>
     <string name="river_textview">River</string>
     <string name="save_hand_button">Save hand</string>
-
-
-
-
+    <string name="player">Player</string>
 
 
 </resources>

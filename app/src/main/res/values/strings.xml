@@ -20,6 +20,17 @@
     <string name="savedhands_textview">Saved hands</string>
     <string name="settings_textview">Settings</string>
 
+    <string-array name="player_amount">
+        <item>2 players</item>
+        <item>3 players</item>
+        <item>4 players</item>
+        <item>5 players</item>
+        <item>6 players</item>
+        <item>7 players</item>
+        <item>8 players</item>
+        <item>9 players</item>
+        <item>10 players</item>
+    </string-array>
 
 
 

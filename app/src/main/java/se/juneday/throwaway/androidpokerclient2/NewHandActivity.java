@@ -138,12 +138,13 @@ public class NewHandActivity extends AppCompatActivity {
 	public int convertBlindsToInt() {
 		String selectedBlinds = dropdownBlinds.getSelectedItem().toString();
 
-		int selectedBlind = 0;
+		int selectedBlind ;
 
 		switch (selectedBlinds) {
-			case  "Blinds" :
+/*			case  "Blinds" :
 				selectedBlind = Blinds.BLINDS_DEFAULT;
 				break;
+*/
 			case "10/10" :
 				selectedBlind = Blinds.BLINDS_FIRST;
 				break;
@@ -153,6 +154,10 @@ public class NewHandActivity extends AppCompatActivity {
 			case "50/50":
 				selectedBlind = Blinds.BLINDS_THIRD;
 				break;
+			default:
+				selectedBlind = Blinds.BLINDS_DEFAULT;
+				break;
+
 		}
 		return selectedBlind;
 	}

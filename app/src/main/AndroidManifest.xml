@@ -26,6 +26,10 @@
 
         <activity android:name=".PreflopActivity"> </activity>
         <activity android:name=".EditPlayersActivity"> </activity>
+        <activity android:name=".FlopActivity"> </activity>
+        <activity android:name=".TurnActivity"> </activity>
+        <activity android:name=".RiverActivity"> </activity>
+
 
     </application>
 

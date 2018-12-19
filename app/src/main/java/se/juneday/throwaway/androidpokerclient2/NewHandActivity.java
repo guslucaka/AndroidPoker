@@ -142,7 +142,7 @@ public class NewHandActivity extends AppCompatActivity {
 
 		switch (selectedBlinds) {
 			case  "Blinds" :
-				selectedBlind = Blinds.BLINDS_FIRST;
+				selectedBlind = Blinds.BLINDS_DEFAULT;
 				break;
 			case "10/10" :
 				selectedBlind = Blinds.BLINDS_FIRST;

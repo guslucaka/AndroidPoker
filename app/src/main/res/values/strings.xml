@@ -11,5 +11,14 @@
     <string name="edit_players_button">Edit Players</string>
     <string name="next_button">Next</string>
     <string name="save_players_button">Save players</string>
+    <string name="flop_textview">Flop</string>
+    <string name="turn_textview">Turn</string>
+    <string name="river_textview">River</string>
+    <string name="save_hand_button">Save hand</string>
+
+
+
+
+
 
 </resources>

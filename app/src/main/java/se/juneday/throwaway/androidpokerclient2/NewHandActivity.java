@@ -123,7 +123,7 @@ public class NewHandActivity extends AppCompatActivity {
 		}
 
 	@IntDef({Blinds.BLINDS_DEFAULT, Blinds.BLINDS_FIRST, Blinds.BLINDS_SECOND, Blinds.BLINDS_THIRD})
-	public @interface Blinds {              // Denotes that the annotated element is of integer type.
+	public @interface Blinds {              // ^Denotes that the annotated element is of integer type.
 		int BLINDS_DEFAULT = 0;
 		int BLINDS_FIRST = 1;
 		int BLINDS_SECOND = 2;

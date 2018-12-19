@@ -29,6 +29,8 @@
         <activity android:name=".FlopActivity"> </activity>
         <activity android:name=".TurnActivity"> </activity>
         <activity android:name=".RiverActivity"> </activity>
+        <activity android:name=".SavedHandsActivity"> </activity>
+
 
 
     </application>

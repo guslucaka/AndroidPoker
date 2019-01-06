@@ -24,7 +24,8 @@ public class NewHandActivity extends AppCompatActivity {
 	final int[] month = new int[1];
 	final int[] dayOfMonth = new int[1];
 	final Calendar[] calendar = new Calendar[1];
-	public Spinner dropdownBlinds;
+	public Spinner dropdownSmallBlind;
+	public Spinner dropdownBigBlind;
 	public static int blindLevel;
 
 
@@ -50,10 +51,15 @@ public class NewHandActivity extends AppCompatActivity {
 			ArrayAdapter<String> gametypeAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, gametypes);
 			dropdownGametype.setAdapter(gametypeAdapter);
 
-			dropdownBlinds = findViewById(R.id.spinner3);
-			String[] blinds = new String[]{"Blinds", "10/10", "25/25", "50/50"};
-			ArrayAdapter<String> blindsAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, blinds);
-			dropdownBlinds.setAdapter(blindsAdapter);
+			dropdownSmallBlind = findViewById(R.id.spinner3);
+			String[] smallBlinds = new String[]{"Small Blind", "10", "25", "50"};
+			ArrayAdapter<String> blindsAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, smallBlinds);
+			dropdownSmallBlind.setAdapter(blindsAdapter);
+
+			dropdownBigBlind = findViewById(R.id.spinner4);
+			String[] bigBlinds = new String[]{"Big Blind", "10", "25", "50"};
+			ArrayAdapter<String> blindsAdapter2 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, bigBlinds);
+			dropdownBigBlind.setAdapter(blindsAdapter2);
 
 			selectDate = findViewById(R.id.btnDate);
 			date = findViewById(R.id.tvSelectedDate);
@@ -61,7 +67,8 @@ public class NewHandActivity extends AppCompatActivity {
 			onDateButtonClick();
 			onEditPlayersClick();
 			onNextClick();
-			onBlindSpinnerSelected();
+			onSmallBlindSpinnerSelected();
+			onBigBlindSpinnerSelected();
 		}
 
 	private void onDateButtonClick(){
@@ -108,8 +115,8 @@ public class NewHandActivity extends AppCompatActivity {
 	}
 
 
-	private void onBlindSpinnerSelected(){
-			dropdownBlinds.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+	private void onSmallBlindSpinnerSelected(){
+			dropdownSmallBlind.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 				@Override
 				public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 					blindLevel = convertBlindsToInt();
@@ -122,6 +129,20 @@ public class NewHandActivity extends AppCompatActivity {
 			});
 		}
 
+	private void onBigBlindSpinnerSelected(){
+		dropdownBigBlind.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+			@Override
+			public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+				blindLevel = convertBlindsToInt();
+			}
+
+			@Override
+			public void onNothingSelected(AdapterView<?> parent) {
+				//Not needed
+			}
+		});
+	}
+
 	@IntDef({Blinds.BLINDS_DEFAULT, Blinds.BLINDS_FIRST, Blinds.BLINDS_SECOND, Blinds.BLINDS_THIRD})
 	public @interface Blinds {              // ^Denotes that the annotated element is of integer type.
 		int BLINDS_DEFAULT = 0;
@@ -130,21 +151,21 @@ public class NewHandActivity extends AppCompatActivity {
 		int BLINDS_THIRD = 3;
 
 	}
-
+ 
 	/**
 	 * Helper method to convert strings of blinds to ints.
 	 * @return The mapped int.
 	 */
 	public int convertBlindsToInt() {
-		String selectedBlinds = dropdownBlinds.getSelectedItem().toString();
+		String selectedBlinds = dropdownSmallBlind.getSelectedItem().toString();
 
 		int selectedBlind ;
 
 		switch (selectedBlinds) {
-/*			case  "Blinds" :
+			case  "Blinds" :
 				selectedBlind = Blinds.BLINDS_DEFAULT;
 				break;
-*/
+
 			case "10/10" :
 				selectedBlind = Blinds.BLINDS_FIRST;
 				break;

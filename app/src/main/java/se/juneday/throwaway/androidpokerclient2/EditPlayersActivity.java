@@ -55,7 +55,8 @@ public class EditPlayersActivity extends AppCompatActivity {
 
                 // loopa igenom (position är platsen i spinnern)
                 Log.d(LOG_TAG, " Value: " + ((TextView)view).getText());
-                for ( int i=0; i<2; i++) {
+                int noPlayers = position + 2;
+                for ( int i=0; i<noPlayers; i++) {
                     // skapa linearlayout (horizontal)
                     EditText e = new EditText(EditPlayersActivity.this);
                     PlayerViewHolder holder = new PlayerViewHolder();

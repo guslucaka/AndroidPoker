@@ -67,10 +67,16 @@ public class EditPlayersActivity extends AppCompatActivity {
                     innerLayout.setOrientation(LinearLayout.HORIZONTAL);
 
                     EditText name = new EditText(EditPlayersActivity.this);
+                    name.setHint("Name");
                     EditText stack = new EditText(EditPlayersActivity.this);
+                    stack.setHint("Stack");
                     EditText pos = new EditText(EditPlayersActivity.this);
+                    pos.setHint("Posision");
                     EditText card1 = new EditText(EditPlayersActivity.this);
+                    card1.setHint("Card 1");
                     EditText card2 = new EditText(EditPlayersActivity.this);
+                    card2.setHint("Card 2");
+
 
                     PlayerViewHolder holder = new PlayerViewHolder();
                     holder.name = name;

@@ -18,7 +18,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="spread_inside" />
+        app:layout_constraintVertical_chainStyle="packed" />
 
     <Spinner
         android:id="@+id/spinner2"
@@ -36,10 +36,8 @@
         android:layout_width="166dp"
         android:layout_height="42dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="36dp"
-        android:layout_marginBottom="324dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toStartOf="@+id/spinner4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner2" />
@@ -49,10 +47,9 @@
         android:id="@+id/spinner4"
         android:layout_width="166dp"
         android:layout_height="42dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="324dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/spinner3"
         app:layout_constraintTop_toBottomOf="@+id/spinner2" />

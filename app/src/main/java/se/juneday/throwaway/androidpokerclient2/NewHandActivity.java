@@ -52,13 +52,13 @@ public class NewHandActivity extends AppCompatActivity {
 			dropdownGametype.setAdapter(gametypeAdapter);
 
 			dropdownSmallBlind = findViewById(R.id.spinner3);
-			String[] smallBlinds = new String[]{"Small Blind", "10", "25", "50"};
-			ArrayAdapter<String> blindsAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, smallBlinds);
+			Integer[] smallBlinds = new Integer[]{10, 25, 50};
+			ArrayAdapter<Integer> blindsAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, smallBlinds);
 			dropdownSmallBlind.setAdapter(blindsAdapter);
 
 			dropdownBigBlind = findViewById(R.id.spinner4);
-			String[] bigBlinds = new String[]{"Big Blind", "10", "25", "50"};
-			ArrayAdapter<String> blindsAdapter2 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, bigBlinds);
+			Integer[] bigBlinds = new Integer[]{10, 25, 50};
+			ArrayAdapter<Integer> blindsAdapter2 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, bigBlinds);
 			dropdownBigBlind.setAdapter(blindsAdapter2);
 
 			selectDate = findViewById(R.id.btnDate);

@@ -45,6 +45,14 @@ public class Player {
         card2=null;
     }
 
+    public Player(String name, String stack, String pos, String kort1, String kort2){
+        this.name = name;
+        this.bet = 0;
+        this.prevBet = 0;
+        this.card1 = null;
+        this.card2 = null;
+    }
+
     public String name() { return name; }
     public double stack() { return stack; }
     public double bet() { return bet; }

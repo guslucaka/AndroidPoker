@@ -122,7 +122,7 @@ public class NewHandActivity extends AppCompatActivity {
 			@Override
 			public void onClick(View v) {
 				Session session = Session.getInstance();
-				Log.d(LOG_TAG, (session.handInfo != null ? session.handInfo.toString() : "null handinfo"));
+				Log.d(LOG_TAG, (session.handInfo != null ? session.players.toString() : "null players"));
 				String location = ((Spinner)findViewById(R.id.spinner1)).getSelectedItem().toString();
 				String gameType = ((Spinner)findViewById(R.id.spinner2)).getSelectedItem().toString();
 				int smallBlind = Integer.parseInt(((Spinner)findViewById(R.id.spinner3)).getSelectedItem().toString());

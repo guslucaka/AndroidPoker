@@ -31,6 +31,7 @@ public class EditPlayersActivity extends AppCompatActivity {
     private static class PlayerViewHolder {
         EditText name;
         EditText stack;
+        EditText position;
         EditText card1;
         EditText card2;
     }
@@ -54,19 +55,37 @@ public class EditPlayersActivity extends AppCompatActivity {
                 // ta bort all vyer (som ligger i layouten)
                 layout.removeAllViews();
 
-                List<PlayerViewHolder> playerInputViews = new ArrayList<>();
+                final List<PlayerViewHolder> playerInputViews = new ArrayList<>();
 
                 // loopa igenom (position är platsen i spinnern)
                 Log.d(LOG_TAG, " Value: " + ((TextView)view).getText());
+
                 int noPlayers = position + 2;
                 for ( int i=0; i<noPlayers; i++) {
-                    // skapa linearlayout (horizontal)
-                    EditText e = new EditText(EditPlayersActivity.this);
+
+                    LinearLayout innerLayout = new LinearLayout(EditPlayersActivity.this);
+                    innerLayout.setOrientation(LinearLayout.HORIZONTAL);
+
+                    EditText name = new EditText(EditPlayersActivity.this);
+                    EditText stack = new EditText(EditPlayersActivity.this);
+                    EditText pos = new EditText(EditPlayersActivity.this);
+                    EditText card1 = new EditText(EditPlayersActivity.this);
+                    EditText card2 = new EditText(EditPlayersActivity.this);
+
                     PlayerViewHolder holder = new PlayerViewHolder();
-                    holder.name = e;
-                    //b.setText("Liverpool");
-                    // lägg till e i den nya layouten
-                    layout.addView(e);  // lägg till den nya layout istället
+                    holder.name = name;
+                    holder.stack = stack;
+                    holder.position = pos;
+                    holder.card1 = card1;
+                    holder.card2 = card2;
+
+                    innerLayout.addView(name);
+                    innerLayout.addView(stack);
+                    innerLayout.addView(pos);
+                    innerLayout.addView(card1);
+                    innerLayout.addView(card2);
+
+                    layout.addView(innerLayout);  // lägg till den nya layout istället
                     playerInputViews.add(holder);
                 }
                 // leta upp (findViewById) Save-knappen
@@ -81,7 +100,16 @@ public class EditPlayersActivity extends AppCompatActivity {
                         // loopa igenom listan
                         // skapa Player-instanser
                         // lägg till dessa i ert Seesion-objekt
-
+                        Session session = Session.getInstance();
+                        for (PlayerViewHolder pvh : playerInputViews) {
+                            Player p = new Player(pvh.name.getText().toString(), pvh.stack.getText()
+                                    .toString(), pvh.position.getText().toString(), pvh.card1.getText()
+                                    .toString(), pvh.card2.getText().toString());
+                            session.players.add(p);
+                        }
+                        for (Player p : session.players) {
+                            Log.d(LOG_TAG, " * " + p);
+                        }
                         Intent intent = new Intent(EditPlayersActivity.this, NewHandActivity.class);
                         startActivity(intent);
                     }

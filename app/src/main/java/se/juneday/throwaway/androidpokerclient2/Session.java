@@ -8,6 +8,10 @@ public class Session {
     public HandInfo handInfo;
     public List<Player> players;
 
+    private Session() {
+        players = new ArrayList<>();
+    }
+
     public static Session getInstance() {
         if(instance == null) {
             instance = new Session();

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.annotation.IntDef;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -17,6 +18,7 @@ import java.util.Calendar;
 
 public class NewHandActivity extends AppCompatActivity {
 
+	private static final String LOG_TAG = NewHandActivity.class.getName();
 	public Button selectDate;
 	public TextView date;
 	final DatePickerDialog[] datePickerDialog = new DatePickerDialog[1];
@@ -28,13 +30,17 @@ public class NewHandActivity extends AppCompatActivity {
 	public Spinner dropdownBigBlind;
 	public static int blindLevel;
 
+@Override
+protected void onStart() {
+	super.onStart();
+	setContentView(R.layout.activity_newhand);
+	initViews();
+}
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_newhand);
-		initViews();
-		}
+	}
 
 		void initViews(){
 			//get the spinner from the xml.
@@ -63,6 +69,10 @@ public class NewHandActivity extends AppCompatActivity {
 
 			selectDate = findViewById(R.id.btnDate);
 			date = findViewById(R.id.tvSelectedDate);
+			if (Session.getInstance().handInfo != null) {
+				Log.d(LOG_TAG, Session.getInstance().handInfo.toString());
+				dropdownLocation.setSelection(locationAdapter.getPosition(Session.getInstance().handInfo.location()));
+			}
 
 			onDateButtonClick();
 			onEditPlayersClick();
@@ -105,9 +115,17 @@ public class NewHandActivity extends AppCompatActivity {
 
 	private void onEditPlayersClick(){
 		final Button editPlayersButton = findViewById(R.id.button_edit);
+
 		editPlayersButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
+				Session session = Session.getInstance();
+				Log.d(LOG_TAG, (session.handInfo != null ? session.handInfo.toString() : "null handinfo"));
+				String location = ((Spinner)findViewById(R.id.spinner1)).getSelectedItem().toString();
+				String gameType = ((Spinner)findViewById(R.id.spinner2)).getSelectedItem().toString();
+				int smallBlind = Integer.parseInt(((Spinner)findViewById(R.id.spinner3)).getSelectedItem().toString());
+				int bigBlind = Integer.parseInt(((Spinner)findViewById(R.id.spinner4)).getSelectedItem().toString());
+				session.handInfo = new HandInfo(location, gameType, smallBlind, bigBlind);
 				Intent intent = new Intent(NewHandActivity.this, EditPlayersActivity.class);
 				startActivity(intent);
 			}

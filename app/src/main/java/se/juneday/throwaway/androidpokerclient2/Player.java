@@ -1,8 +1,9 @@
 package se.juneday.throwaway.androidpokerclient2;
+import android.util.Log;
+
 import java.util.*;
 
 public class Player {
-
 
     public enum Position {
         SB,
@@ -24,7 +25,12 @@ public class Player {
     private Position position;
     private final Card card1;
     private final Card card2;
+    private String pos;
+    private String kort1;
+    private String kort2;
+    private String stakk;
 
+/* //Dessa behövs inte nu då vi inte har tid att lösa problemen som uppstått.
     public Player(String name, double stack, Position position, Card card1, Card card2){
         this.name = name;
         this.stack = stack;
@@ -43,10 +49,14 @@ public class Player {
         this.position = position;
         card1=null;
         card2=null;
-    }
-
-    public Player(String name, String stack, String pos, String kort1, String kort2){
+    } */
+        // Tillfällig lösning för att förenkla byggandet av Player-objekt i EditPlayersActivity
+    public Player(String name, String stakk, String pos, String kort1, String kort2){
         this.name = name;
+        this.stakk = stakk;
+        this.pos = pos;
+        this.kort1 = kort1;
+        this.kort2 = kort2;
         this.bet = 0;
         this.prevBet = 0;
         this.card1 = null;
@@ -74,7 +84,7 @@ public class Player {
 
     @Override
     public String toString(){
-        return "(" + position + ")" + name + " " + stack + " " + " | " + card1 + " | " + card2;
+        return "(" + pos + ")" + name + " " + stakk + "kr " + " | " + kort1 + " | " + kort2;
     }
 
     public double pay(double amount) {

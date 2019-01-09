@@ -71,7 +71,7 @@ public class EditPlayersActivity extends AppCompatActivity {
                     EditText stack = new EditText(EditPlayersActivity.this);
                     stack.setHint("Stack");
                     EditText pos = new EditText(EditPlayersActivity.this);
-                    pos.setHint("Posision");
+                    pos.setHint("Position");
                     EditText card1 = new EditText(EditPlayersActivity.this);
                     card1.setHint("Card 1");
                     EditText card2 = new EditText(EditPlayersActivity.this);
@@ -108,6 +108,7 @@ public class EditPlayersActivity extends AppCompatActivity {
                         // lägg till dessa i ert Seesion-objekt
                         Session session = Session.getInstance();
                         for (PlayerViewHolder pvh : playerInputViews) {
+                            Log.d(LOG_TAG, " " + pvh.name.getText().toString() + " " + pvh.stack.getText().toString());
                             Player p = new Player(pvh.name.getText().toString(), pvh.stack.getText()
                                     .toString(), pvh.position.getText().toString(), pvh.card1.getText()
                                     .toString(), pvh.card2.getText().toString());

@@ -109,6 +109,8 @@ public class NewHandActivity extends AppCompatActivity {
 		nextButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
+				Session session = Session.getInstance();
+				Log.d(LOG_TAG, (session.handInfo.toString() + " * " +  session.players.toString()));
 				Intent intent = new Intent(NewHandActivity.this, PreflopActivity.class);
 				startActivity(intent);
 			}

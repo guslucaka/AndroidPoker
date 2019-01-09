@@ -30,6 +30,9 @@ public class EditPlayersActivity extends AppCompatActivity {
 
     private static class PlayerViewHolder {
         EditText name;
+        EditText stack;
+        EditText card1;
+        EditText card2;
     }
 
     void initViews(){
@@ -46,7 +49,7 @@ public class EditPlayersActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 Log.d(LOG_TAG, "Jag heter Rikard och är så jävla grym på allt, " + position);
 
-                // hitta layoiuten
+                // hitta layouten
                 LinearLayout layout = findViewById(R.id.player_list);
                 // ta bort all vyer (som ligger i layouten)
                 layout.removeAllViews();

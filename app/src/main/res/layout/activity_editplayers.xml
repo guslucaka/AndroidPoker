@@ -11,7 +11,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="124dp"
         android:layout_marginEnd="124dp"
-        android:layout_marginBottom="52dp"
         android:text="@string/save_players_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -29,10 +28,16 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:id="@+id/player_list"
+        android:layout_width="160dp"
+        android:layout_height="419dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginBottom="40dp"
         android:orientation="vertical"
-        android:id="@+id/player_list">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/player_amount_spinner">
 
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

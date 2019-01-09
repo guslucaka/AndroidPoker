@@ -30,12 +30,12 @@ public class NewHandActivity extends AppCompatActivity {
 	public Spinner dropdownBigBlind;
 	public static int blindLevel;
 
-@Override
-protected void onStart() {
-	super.onStart();
-	setContentView(R.layout.activity_newhand);
-	initViews();
-}
+	@Override
+	protected void onStart() {
+		super.onStart();
+		setContentView(R.layout.activity_newhand);
+		initViews();
+	}
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -57,28 +57,30 @@ protected void onStart() {
 			ArrayAdapter<String> gametypeAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, gametypes);
 			dropdownGametype.setAdapter(gametypeAdapter);
 
-			dropdownSmallBlind = findViewById(R.id.spinner3);
+			Spinner dropdownSmallBlind = findViewById(R.id.spinner3);
 			Integer[] smallBlinds = new Integer[]{10, 25, 50};
-			ArrayAdapter<Integer> blindsAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, smallBlinds);
-			dropdownSmallBlind.setAdapter(blindsAdapter);
+			ArrayAdapter<Integer> smallBlindAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, smallBlinds);
+			dropdownSmallBlind.setAdapter(smallBlindAdapter);
 
-			dropdownBigBlind = findViewById(R.id.spinner4);
+			Spinner dropdownBigBlind = findViewById(R.id.spinner4);
 			Integer[] bigBlinds = new Integer[]{10, 25, 50};
-			ArrayAdapter<Integer> blindsAdapter2 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, bigBlinds);
-			dropdownBigBlind.setAdapter(blindsAdapter2);
+			ArrayAdapter<Integer> bigBlindAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, bigBlinds);
+			dropdownBigBlind.setAdapter(bigBlindAdapter);
 
 			selectDate = findViewById(R.id.btnDate);
 			date = findViewById(R.id.tvSelectedDate);
+
 			if (Session.getInstance().handInfo != null) {
 				Log.d(LOG_TAG, Session.getInstance().handInfo.toString());
 				dropdownLocation.setSelection(locationAdapter.getPosition(Session.getInstance().handInfo.location()));
+				dropdownGametype.setSelection(gametypeAdapter.getPosition(Session.getInstance().handInfo.gametype()));
+				dropdownSmallBlind.setSelection(smallBlindAdapter.getPosition(Session.getInstance().handInfo.smallBlind()));
+				dropdownBigBlind.setSelection(bigBlindAdapter.getPosition(Session.getInstance().handInfo.bigBlind()));
 			}
 
 			onDateButtonClick();
 			onEditPlayersClick();
 			onNextClick();
-			onSmallBlindSpinnerSelected();
-			onBigBlindSpinnerSelected();
 		}
 
 	private void onDateButtonClick(){
@@ -131,74 +133,4 @@ protected void onStart() {
 			}
 		});
 	}
-
-
-	private void onSmallBlindSpinnerSelected(){
-			dropdownSmallBlind.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-				@Override
-				public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-					blindLevel = convertBlindsToInt();
-				}
-
-				@Override
-				public void onNothingSelected(AdapterView<?> parent) {
-					//Not needed
-				}
-			});
-		}
-
-	private void onBigBlindSpinnerSelected(){
-		dropdownBigBlind.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-			@Override
-			public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-				blindLevel = convertBlindsToInt();
-			}
-
-			@Override
-			public void onNothingSelected(AdapterView<?> parent) {
-				//Not needed
-			}
-		});
-	}
-
-	@IntDef({Blinds.BLINDS_DEFAULT, Blinds.BLINDS_FIRST, Blinds.BLINDS_SECOND, Blinds.BLINDS_THIRD})
-	public @interface Blinds {              // ^Denotes that the annotated element is of integer type.
-		int BLINDS_DEFAULT = 0;
-		int BLINDS_FIRST = 1;
-		int BLINDS_SECOND = 2;
-		int BLINDS_THIRD = 3;
-
-	}
- 
-	/**
-	 * Helper method to convert strings of blinds to ints.
-	 * @return The mapped int.
-	 */
-	public int convertBlindsToInt() {
-		String selectedBlinds = dropdownSmallBlind.getSelectedItem().toString();
-
-		int selectedBlind ;
-
-		switch (selectedBlinds) {
-			case  "Blinds" :
-				selectedBlind = Blinds.BLINDS_DEFAULT;
-				break;
-
-			case "10/10" :
-				selectedBlind = Blinds.BLINDS_FIRST;
-				break;
-			case "25/25":
-				selectedBlind = Blinds.BLINDS_SECOND;
-				break;
-			case "50/50":
-				selectedBlind = Blinds.BLINDS_THIRD;
-				break;
-			default:
-				selectedBlind = Blinds.BLINDS_DEFAULT;
-				break;
-
-		}
-		return selectedBlind;
-	}
-
 }

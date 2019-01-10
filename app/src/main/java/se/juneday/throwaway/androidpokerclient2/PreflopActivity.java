@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -17,7 +19,28 @@ import java.util.List;
 
 public class PreflopActivity extends AppCompatActivity {
 
-    List<String> playersToNames(List<Player> players) {
+    private class PlayerAction {
+        private Spinner playersSpinner = new Spinner(PreflopActivity.this);
+        private Spinner actions = new Spinner(PreflopActivity.this);
+        private String[] actionStrings = new String[]{"Bet", "Post", "Call", "Fold", "Allin"};
+        private EditText amount = new EditText(PreflopActivity.this);
+        LinearLayout innerLayout = new LinearLayout(PreflopActivity.this);
+
+        public PlayerAction(List<Player> players) {
+            ArrayAdapter<String> playersAdapter = new ArrayAdapter<>(PreflopActivity.this,
+                    android.R.layout.simple_spinner_dropdown_item, playersToNames(players));
+            playersSpinner.setAdapter(playersAdapter);
+            ArrayAdapter<String> actionsAdapter = new ArrayAdapter<>(PreflopActivity.this,
+                    android.R.layout.simple_spinner_dropdown_item, actionStrings);
+            actions.setAdapter(actionsAdapter);
+            innerLayout.setOrientation(LinearLayout.HORIZONTAL);
+            innerLayout.addView(playersSpinner);
+            innerLayout.addView(actions);
+            innerLayout.addView(amount);
+        }
+    }
+
+    static List<String> playersToNames(List<Player> players) {
         List<String> result = new ArrayList<>();
         for (Player p : players) {
             result.add(p.name());
@@ -32,75 +55,28 @@ public class PreflopActivity extends AppCompatActivity {
         }
 
         void initViews(){
-
+            onNextClick();
+            onPlusClick();
+/*
         List<Player> players = Session.getInstance().players;
+        LinearLayout layout = findViewById(R.id.player_list);
+        layout.removeAllViews();
+        PlayerAction pa = new PlayerAction(players);
+        layout.addView(pa.innerLayout); */
+        }
 
 
-
-        //get the spinner from the xml.
-        Spinner dropdownPlayers = findViewById(R.id.spinner1);
-        //create a list of items for the spinner.
-        //String[] players = new String[]{"Player", "Erik", "Lucas", "Sven"};
-        //create an adapter to describe how the items are displayed.
-        ArrayAdapter<String> playersAdapter = new ArrayAdapter<String>(
-                this, android.R.layout.simple_spinner_dropdown_item, playersToNames(players)) {
-            /*
+    private void onPlusClick() {
+        final Button plusButton = findViewById(R.id.new_action_button);
+        plusButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean isEnabled(int position){
-                return position != 0;
+            public void onClick(View v) {
+                List<Player> players = Session.getInstance().players;
+                LinearLayout layout = findViewById(R.id.player_list);
+                PlayerAction pa = new PlayerAction(players);
+                layout.addView(pa.innerLayout);
             }
-
-            @Override
-            public View getDropDownView(int position, View convertView,
-                                        @NonNull ViewGroup parent) {
-                View view = super.getDropDownView(position, convertView, parent);
-                TextView tv = (TextView) view;
-                if(position == 0){
-                    // Set the hint text color gray
-                    tv.setTextColor(Color.GRAY);
-                }
-                else {
-                    tv.setTextColor(Color.BLACK);
-                }
-                return view;
-            }
-            */
-        };
-        //set the spinners adapter to the previously created one.
-        playersAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
-        dropdownPlayers.setAdapter(playersAdapter);
-
-        Spinner dropdownAction = findViewById(R.id.spinner2);
-        //create a list of items for the spinner.
-        String[] action = new String[]{"Action", "Bet", "Call", "Fold", "Allin"};
-        //create an adapter to describe how the items are displayed.
-        ArrayAdapter<String> actionAdapter = new ArrayAdapter<String>(
-                this, android.R.layout.simple_spinner_dropdown_item, action) {
-            @Override
-            public boolean isEnabled(int position){
-                return position != 0;
-            }
-
-            @Override
-            public View getDropDownView(int position, View convertView,
-                                        @NonNull ViewGroup parent) {
-                View view = super.getDropDownView(position, convertView, parent);
-                TextView tv = (TextView) view;
-                if(position == 0){
-                    // Set the hint text color gray
-                    tv.setTextColor(Color.GRAY);
-                }
-                else {
-                    tv.setTextColor(Color.BLACK);
-                }
-                return view;
-            }
-        };
-        //set the spinners adapter to the previously created one.
-        actionAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
-        dropdownAction.setAdapter(actionAdapter);
-
-        onNextClick();
+        });
     }
 
     private void onNextClick() {

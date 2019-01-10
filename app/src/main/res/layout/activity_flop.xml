@@ -15,4 +15,56 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
+    <EditText
+        android:id="@+id/card1_editText"
+        android:layout_width="62dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:autofillHints="@string/card_hint"
+        android:ems="10"
+        android:hint="@string/community_card"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toStartOf="@+id/card2_editText"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/card2_editText"
+        android:layout_width="62dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="@string/community_card"
+        android:autofillHints="@string/card_hint"
+        app:layout_constraintEnd_toStartOf="@+id/card3_editText"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/card3_editText"
+        android:layout_width="62dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="@string/community_card"
+        android:autofillHints="@string/card_hint"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/flop_cards_textview"
+        android:layout_width="76dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="26dp"
+        android:text="@string/flop_cards_textview"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/card1_editText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </android.support.constraint.ConstraintLayout>

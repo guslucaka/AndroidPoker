@@ -75,7 +75,6 @@ public class Player {
     public String kort1() { return kort1; }
     public String kort2() { return kort2; }
 
-
     public Position position() { return position; }
     public Card card1() { return card1; }
     public Card card2() { return card2; }

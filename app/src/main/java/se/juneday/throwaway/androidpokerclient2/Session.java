@@ -8,10 +8,11 @@ public class Session {
     public HandInfo handInfo;
     public List<Player> players;
     public String noOfPlayers;
+    public List<String> communityCards;
 
-    private Session() {
-        players = new ArrayList<>();
-    }
+    private Session() { players = new ArrayList<>();
+                        communityCards = new ArrayList<>(); }
+
 
     public static Session getInstance() {
         if(instance == null) {

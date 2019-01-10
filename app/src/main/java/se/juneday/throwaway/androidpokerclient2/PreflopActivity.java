@@ -57,12 +57,12 @@ public class PreflopActivity extends AppCompatActivity {
         void initViews(){
             onNextClick();
             onPlusClick();
-/*
+
         List<Player> players = Session.getInstance().players;
         LinearLayout layout = findViewById(R.id.player_list);
         layout.removeAllViews();
         PlayerAction pa = new PlayerAction(players);
-        layout.addView(pa.innerLayout); */
+        layout.addView(pa.innerLayout);
         }
 
 

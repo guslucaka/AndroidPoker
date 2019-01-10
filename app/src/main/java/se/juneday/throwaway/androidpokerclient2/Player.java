@@ -21,7 +21,7 @@ public class Player {
     private String name;
     private double stack;
     protected double bet;
-    private double prevBet;
+    public double prevBet;
     private Position position;
     private final Card card1;
     private final Card card2;

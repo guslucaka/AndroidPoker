@@ -6,31 +6,39 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup">
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+                    android:label="Main Menu">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".NewHandActivity" >
+        <activity android:name=".NewHandActivity"
+                    android:label="New Hand">
         <intent-filter>
         <action android:name="android.intent.action.VIEW" />
         </intent-filter>
         </activity>
 
-        <activity android:name=".PreflopActivity"> </activity>
-        <activity android:name=".EditPlayersActivity"> </activity>
-        <activity android:name=".FlopActivity"> </activity>
-        <activity android:name=".TurnActivity"> </activity>
-        <activity android:name=".RiverActivity"> </activity>
-        <activity android:name=".SavedHandsActivity"> </activity>
-        <activity android:name=".SettingsActivity"> </activity>
+        <activity android:name=".PreflopActivity"
+                    android:label="Preflop"> </activity>
+        <activity android:name=".EditPlayersActivity"
+                    android:label="Edit Players"> </activity>
+        <activity android:name=".FlopActivity"
+                    android:label="Flop"> </activity>
+        <activity android:name=".TurnActivity"
+                    android:label="Turn"> </activity>
+        <activity android:name=".RiverActivity"
+                    android:label="River"> </activity>
+        <activity android:name=".SavedHandsActivity"
+                    android:label="Saved Hands"> </activity>
+        <activity android:name=".SettingsActivity"
+                    android:label="Settings"> </activity>
 
 
 

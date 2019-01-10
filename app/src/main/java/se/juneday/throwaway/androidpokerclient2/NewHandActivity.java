@@ -26,9 +26,6 @@ public class NewHandActivity extends AppCompatActivity {
 	final int[] month = new int[1];
 	final int[] dayOfMonth = new int[1];
 	final Calendar[] calendar = new Calendar[1];
-	public Spinner dropdownSmallBlind;
-	public Spinner dropdownBigBlind;
-	public static int blindLevel;
 
 	@Override
 	protected void onStart() {

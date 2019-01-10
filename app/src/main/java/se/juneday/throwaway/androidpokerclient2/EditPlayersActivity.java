@@ -19,6 +19,7 @@ import java.util.List;
 public class EditPlayersActivity extends AppCompatActivity {
 
     private static final String LOG_TAG = EditPlayersActivity.class.getName();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +27,13 @@ public class EditPlayersActivity extends AppCompatActivity {
         initViews();
         Session session = Session.getInstance();
         Log.d(LOG_TAG, session.handInfo.toString());
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        setContentView(R.layout.activity_editplayers);
+        initViews();
     }
 
     private static class PlayerViewHolder {
@@ -36,15 +44,17 @@ public class EditPlayersActivity extends AppCompatActivity {
         EditText card2;
     }
 
-    void initViews(){
-
-      //  onSavePlayersclick();
+    void initViews() {
 
         Spinner amountOfPlayers = findViewById(R.id.player_amount_spinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
                 this, R.array.player_amount, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         amountOfPlayers.setAdapter(adapter);
+        if (Session.getInstance().noOfPlayers != null) {
+            Log.d(LOG_TAG, Session.getInstance().noOfPlayers);
+            amountOfPlayers.setSelection(adapter.getPosition(Session.getInstance().noOfPlayers));
+        }
         amountOfPlayers.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -58,10 +68,10 @@ public class EditPlayersActivity extends AppCompatActivity {
                 final List<PlayerViewHolder> playerInputViews = new ArrayList<>();
 
                 // loopa igenom (position är platsen i spinnern)
-                Log.d(LOG_TAG, " Value: " + ((TextView)view).getText());
+                Log.d(LOG_TAG, " Value: " + ((TextView) view).getText());
 
                 int noPlayers = position + 2;
-                for ( int i=0; i<noPlayers; i++) {
+                for (int i = 0; i < noPlayers; i++) {
 
                     LinearLayout innerLayout = new LinearLayout(EditPlayersActivity.this);
                     innerLayout.setOrientation(LinearLayout.HORIZONTAL);
@@ -91,22 +101,18 @@ public class EditPlayersActivity extends AppCompatActivity {
                     innerLayout.addView(card1);
                     innerLayout.addView(card2);
 
-                    layout.addView(innerLayout);  // lägg till den nya layout istället
+                    layout.addView(innerLayout);
                     playerInputViews.add(holder);
                 }
-                // leta upp (findViewById) Save-knappen
-                // skapa en lyssnare
-                // på knappens ok-tryck:
-                // loopa igenom alla edittext:er (som finns i playerInputView) och spara undan värdena
 
                 final Button button = findViewById(R.id.save_players_button);
                 button.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        // loopa igenom listan
-                        // skapa Player-instanser
-                        // lägg till dessa i ert Seesion-objekt
+
                         Session session = Session.getInstance();
+                        session.noOfPlayers = ((Spinner)findViewById(R.id.player_amount_spinner)).getSelectedItem().toString();
+                        Log.d(LOG_TAG, " playerAmount: " + session.noOfPlayers);
                         for (PlayerViewHolder pvh : playerInputViews) {
                             Log.d(LOG_TAG, " " + pvh.name.getText().toString() + " " + pvh.stack.getText().toString());
                             Player p = new Player(pvh.name.getText().toString(), pvh.stack.getText()
@@ -117,6 +123,7 @@ public class EditPlayersActivity extends AppCompatActivity {
                         for (Player p : session.players) {
                             Log.d(LOG_TAG, " * " + p);
                         }
+
                         Intent intent = new Intent(EditPlayersActivity.this, NewHandActivity.class);
                         startActivity(intent);
                     }
@@ -129,16 +136,4 @@ public class EditPlayersActivity extends AppCompatActivity {
             }
         });
     }
-
-    private void onSavePlayersclick(){
-        final Button button = findViewById(R.id.save_players_button);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(EditPlayersActivity.this, NewHandActivity.class);
-                startActivity(intent);
-            }
-        });
-    }
-
 }

@@ -7,6 +7,7 @@ public class Session {
     private static Session instance;
     public HandInfo handInfo;
     public List<Player> players;
+    public String noOfPlayers;
 
     private Session() {
         players = new ArrayList<>();

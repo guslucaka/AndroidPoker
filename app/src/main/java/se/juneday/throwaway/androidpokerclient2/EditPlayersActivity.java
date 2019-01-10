@@ -36,7 +36,7 @@ public class EditPlayersActivity extends AppCompatActivity {
         initViews();
     }
 
-    private static class PlayerViewHolder {
+    public static class PlayerViewHolder {
         EditText name;
         EditText stack;
         EditText position;
@@ -45,6 +45,7 @@ public class EditPlayersActivity extends AppCompatActivity {
     }
 
     void initViews() {
+
 
         Spinner amountOfPlayers = findViewById(R.id.player_amount_spinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
@@ -58,7 +59,7 @@ public class EditPlayersActivity extends AppCompatActivity {
         amountOfPlayers.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Log.d(LOG_TAG, "Jag heter Rikard och är så jävla grym på allt, " + position);
+                //Log.d(LOG_TAG, "Jag heter Rikard och är så jävla grym på allt, " + position);
 
                 // hitta layouten
                 LinearLayout layout = findViewById(R.id.player_list);
@@ -71,6 +72,7 @@ public class EditPlayersActivity extends AppCompatActivity {
                 Log.d(LOG_TAG, " Value: " + ((TextView) view).getText());
 
                 int noPlayers = position + 2;
+                List<Player> players = Session.getInstance().players;
                 for (int i = 0; i < noPlayers; i++) {
 
                     LinearLayout innerLayout = new LinearLayout(EditPlayersActivity.this);
@@ -78,14 +80,29 @@ public class EditPlayersActivity extends AppCompatActivity {
 
                     EditText name = new EditText(EditPlayersActivity.this);
                     name.setHint("Name");
+                    if(players.size()!=0) {
+                        name.setText(players.get(i).name());
+                    }
                     EditText stack = new EditText(EditPlayersActivity.this);
                     stack.setHint("Stack");
+                    if(players.size()!=0) {
+                        stack.setText(players.get(i).stakk());
+                    }
                     EditText pos = new EditText(EditPlayersActivity.this);
                     pos.setHint("Position");
+                    if(players.size()!=0) {
+                        pos.setText(players.get(i).pos());
+                    }
                     EditText card1 = new EditText(EditPlayersActivity.this);
                     card1.setHint("Card 1");
+                    if(players.size()!=0) {
+                        card1.setText(players.get(i).kort1());
+                    }
                     EditText card2 = new EditText(EditPlayersActivity.this);
                     card2.setHint("Card 2");
+                    if(players.size()!=0) {
+                        card2.setText(players.get(i).kort2());
+                    }
 
 
                     PlayerViewHolder holder = new PlayerViewHolder();
@@ -110,9 +127,12 @@ public class EditPlayersActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
 
+                        Session.getInstance().players.clear();
+
                         Session session = Session.getInstance();
                         session.noOfPlayers = ((Spinner)findViewById(R.id.player_amount_spinner)).getSelectedItem().toString();
                         Log.d(LOG_TAG, " playerAmount: " + session.noOfPlayers);
+
                         for (PlayerViewHolder pvh : playerInputViews) {
                             Log.d(LOG_TAG, " " + pvh.name.getText().toString() + " " + pvh.stack.getText().toString());
                             Player p = new Player(pvh.name.getText().toString(), pvh.stack.getText()

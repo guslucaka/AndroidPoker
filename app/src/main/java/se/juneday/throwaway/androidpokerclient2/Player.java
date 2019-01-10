@@ -15,13 +15,13 @@ public class Player {
         LJ,
         HJ,
         CO,
-        BUT;
+        BUT
     }
 
     private String name;
     private double stack;
     protected double bet;
-    public double prevBet;
+    private double prevBet;
     private Position position;
     private final Card card1;
     private final Card card2;
@@ -70,6 +70,11 @@ public class Player {
     public void resetPrevBet() {
         this.prevBet = 0;
     }
+    public String stakk() { return stakk; }
+    public String pos() { return pos; }
+    public String kort1() { return kort1; }
+    public String kort2() { return kort2; }
+
 
     public Position position() { return position; }
     public Card card1() { return card1; }

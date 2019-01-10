@@ -12,8 +12,18 @@ import android.widget.Spinner;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class PreflopActivity extends AppCompatActivity {
 
+    List<String> playersToNames(List<Player> players) {
+        List<String> result = new ArrayList<>();
+        for (Player p : players) {
+            result.add(p.name());
+        }
+        return result;
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,13 +33,18 @@ public class PreflopActivity extends AppCompatActivity {
 
         void initViews(){
 
+        List<Player> players = Session.getInstance().players;
+
+
+
         //get the spinner from the xml.
         Spinner dropdownPlayers = findViewById(R.id.spinner1);
         //create a list of items for the spinner.
-        String[] players = new String[]{"Player", "Erik", "Lucas", "Sven"};
+        //String[] players = new String[]{"Player", "Erik", "Lucas", "Sven"};
         //create an adapter to describe how the items are displayed.
         ArrayAdapter<String> playersAdapter = new ArrayAdapter<String>(
-                this, android.R.layout.simple_spinner_dropdown_item, players) {
+                this, android.R.layout.simple_spinner_dropdown_item, playersToNames(players)) {
+            /*
             @Override
             public boolean isEnabled(int position){
                 return position != 0;
@@ -49,6 +64,7 @@ public class PreflopActivity extends AppCompatActivity {
                 }
                 return view;
             }
+            */
         };
         //set the spinners adapter to the previously created one.
         playersAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);

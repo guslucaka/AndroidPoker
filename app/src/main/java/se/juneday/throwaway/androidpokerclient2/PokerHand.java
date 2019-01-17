@@ -9,14 +9,30 @@ public class PokerHand {
     public static List<Player> playerList = new ArrayList<>(); //The players playing the hand
     public static List<Street> streetList = new ArrayList<>(); //What happened in the different streets of the hand
     public static List<Card> communityCards = new ArrayList<>(); //The community cards the dealer puts on the table
+    public static List<List<Street>> listOfStreets = new ArrayList<>();
+    public static List<String> communityCardList = new ArrayList<>();
 
+    //Förenklad konstruktor så att den passar session-klassen, istället för tvärtom pga tidsbrist
+    public PokerHand(HandInfo handInfo, ArrayList<Player> playerList,
+                     ArrayList<List<Street>> listOfStreets, ArrayList<String> communityCardList){
+        this.handInfo = handInfo;
+        this.playerList = playerList;
+        this.listOfStreets = listOfStreets;
+        this.communityCardList = communityCardList;
+    }
+
+    @Override
+    public String toString() {
+        return handInfo.toString() + "  " + playerList + "  " + listOfStreets;
+    }
+/*
     public PokerHand(HandInfo handInfo, ArrayList<Player> playerList,
                      ArrayList<Street> streetList, ArrayList<Card> communityCards){
         this.handInfo = handInfo;
         this.playerList = playerList;
         this.streetList = streetList;
         this.communityCards = communityCards;
-    }
+    }*/
 
     public void printPokerHand(){
         System.out.println(" ");

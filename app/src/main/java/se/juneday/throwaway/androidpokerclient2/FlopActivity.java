@@ -72,6 +72,7 @@ public class FlopActivity extends AppCompatActivity {
         });
     }
 
+
     private void onNextClick() {
         final Button nextButton = findViewById(R.id.button_next);
         nextButton.setOnClickListener(new View.OnClickListener() {

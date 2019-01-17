@@ -3,6 +3,7 @@ package se.juneday.throwaway.androidpokerclient2;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -14,6 +15,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FlopActivity extends AppCompatActivity {
+
+    private static final String LOG_TAG = FlopActivity.class.getCanonicalName();
 
     private class PlayerAction {
         private Spinner playersSpinner = new Spinner(FlopActivity.this);
@@ -55,11 +58,8 @@ public class FlopActivity extends AppCompatActivity {
         onNextClick();
         onPlusClick();
 
-        List<Player> players = Session.getInstance().players;
-        LinearLayout layout = findViewById(R.id.player_list);
-        layout.removeAllViews();
-        FlopActivity.PlayerAction pa = new FlopActivity.PlayerAction(players);
-        layout.addView(pa.innerLayout);
+
+
     }
 
     private void onPlusClick() {
@@ -80,6 +80,22 @@ public class FlopActivity extends AppCompatActivity {
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
+                String flopCard1 = ((EditText)findViewById(R.id.card1_editText)).getText().toString();
+                String flopCard2 = ((EditText)findViewById(R.id.card2_editText)).getText().toString();
+                String flopCard3 = ((EditText)findViewById(R.id.card3_editText)).getText().toString();
+
+                Session session = Session.getInstance();
+
+                session.communityCards.add(flopCard1);
+                session.communityCards.add(flopCard2);
+                session.communityCards.add(flopCard3);
+
+                Log.d(LOG_TAG, "onNextClick() " + session);
+                Log.d(LOG_TAG, "onNextClick() " + session.communityCards.size());
+                Log.d(LOG_TAG, "onNextClick() " + session.communityCards.get(0));
+
                 Intent intent = new Intent(FlopActivity.this, TurnActivity.class);
                 startActivity(intent);
             }

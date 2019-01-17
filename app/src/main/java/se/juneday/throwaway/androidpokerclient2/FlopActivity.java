@@ -65,7 +65,7 @@ public class FlopActivity extends AppCompatActivity {
     }
 
     private void onPlusClick() {
-        final Button plusButton = findViewById(R.id.new_action_button2);
+        final Button plusButton = findViewById(R.id.new_action_button);
         plusButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

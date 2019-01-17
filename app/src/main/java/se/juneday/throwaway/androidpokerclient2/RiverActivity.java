@@ -10,11 +10,18 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class RiverActivity extends AppCompatActivity {
+
+    private static final String LOG_TAG = RiverActivity.class.getCanonicalName();
+    private TextView flopCard1; // = (TextView)findViewById(R.id.textView);
+    private TextView flopCard2; // = (TextView)findViewById(R.id.textView2);
+    private TextView flopCard3;
+    private TextView flopCard4;
 
     private class PlayerAction {
         private Spinner playersSpinner = new Spinner(RiverActivity.this);
@@ -51,6 +58,22 @@ public class RiverActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_river);
         initViews();
+
+        Session session = Session.getInstance();
+
+        flopCard1 = findViewById(R.id.textView);
+        flopCard2 = findViewById(R.id.textView2);
+        flopCard3 = findViewById(R.id.textView3);
+        flopCard4 = findViewById(R.id.textView4);
+
+        Log.d(LOG_TAG, "onCreate() " + session);
+        Log.d(LOG_TAG, "onCreate() " + session.communityCards.size());
+        Log.d(LOG_TAG, "onCreate() " + session.communityCards.get(0));
+
+        flopCard1.setText(session.communityCards.get(0));
+        flopCard2.setText(session.communityCards.get(1));
+        flopCard3.setText(session.communityCards.get(2));
+        flopCard4.setText(session.communityCards.get(3));
     }
 
     void initViews(){

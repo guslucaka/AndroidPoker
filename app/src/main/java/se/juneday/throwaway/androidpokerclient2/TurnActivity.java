@@ -100,10 +100,15 @@ public class TurnActivity extends AppCompatActivity {
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(TurnActivity.this, RiverActivity.class);
-                startActivity(intent);
+
+                String flopCard4 = ((EditText)findViewById(R.id.card4_editText)).getText().toString();
 
                 Session session = Session.getInstance();
+
+                session.communityCards.add(flopCard4);
+
+                Intent intent = new Intent(TurnActivity.this, RiverActivity.class);
+                startActivity(intent);
 
                 // linjära layouten i scrollview
                 LinearLayout layout = findViewById(R.id.player_list);

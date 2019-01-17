@@ -3,6 +3,7 @@ package se.juneday.throwaway.androidpokerclient2;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -53,15 +54,8 @@ public class RiverActivity extends AppCompatActivity {
     }
 
     void initViews(){
-
         onSaveHandClick();
         onPlusClick();
-
-        List<Player> players = Session.getInstance().players;
-        LinearLayout layout = findViewById(R.id.player_list);
-        layout.removeAllViews();
-        RiverActivity.PlayerAction pa = new RiverActivity.PlayerAction(players);
-        layout.addView(pa.innerLayout);
     }
 
     private void onPlusClick() {
@@ -84,6 +78,37 @@ public class RiverActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(RiverActivity.this, MainActivity.class);
                 startActivity(intent);
+
+                Session session = Session.getInstance();
+
+                // linjära layouten i scrollview
+                LinearLayout layout = findViewById(R.id.player_list);
+                List<Street> river = new ArrayList<>();
+                Log.d("onNextClick()", " layout: " + layout);
+
+                // loopa igenom alla i lin layout tillagda viewer
+                for (int i=0; i<layout.getChildCount(); i++) {
+                    Log.d("onNextClick()", " list item: " + i);
+                    // hämta ut i:te innerlayout
+                    LinearLayout innerLayout = (LinearLayout) layout.getChildAt(i);
+                    Log.d("onNextClick()", " list item: " + innerLayout);
+                    // den tredje (dvs index 2) är ju en edittext, casta om och läs ut värdet
+                    String name = ((Spinner) innerLayout.getChildAt(0)).getSelectedItem().toString();
+                    Log.d("onNextClick()", " list item: " + name);
+                    String action = ((Spinner) innerLayout.getChildAt(1)).getSelectedItem().toString();
+                    Log.d("onNextClick()", " list item: " + action);
+                    String amount = ((EditText) innerLayout.getChildAt(2)).getText().toString();
+                    Log.d("onNextClick()", " list item: " + amount);
+                    Street s = new Street(name, action, amount);
+                    river.add(s);
+                    for(Street st : river){
+                        Log.d("onNextClick()", " preflop list: " + st);
+                    }
+                }
+                session.streets.add(river);
+                for (List<Street> li : session.streets){
+                    Log.d("onNextClick()", " list of  streetlists: " + li);
+                }
             }
         });
     }

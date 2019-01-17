@@ -30,6 +30,24 @@ public class Player {
     private String kort2;
     private String stakk;
 
+    // Tillfällig lösning för att förenkla byggandet av Player-objekt i EditPlayersActivity pga tidsbrist
+    public Player(String name, String stakk, String pos, String kort1, String kort2){
+        this.name = name;
+        this.stakk = stakk;
+        this.pos = pos;
+        this.kort1 = kort1;
+        this.kort2 = kort2;
+        this.bet = 0;
+        this.prevBet = 0;
+        this.card1 = null;
+        this.card2 = null;
+    }
+    public String name() { return name; }
+    public String stakk() { return stakk; }
+    public String pos() { return pos; }
+    public String kort1() { return kort1; }
+    public String kort2() { return kort2; }
+
 /* //Dessa behövs inte nu då vi inte har tid att lösa problemen som uppstått.
     public Player(String name, double stack, Position position, Card card1, Card card2){
         this.name = name;
@@ -50,30 +68,14 @@ public class Player {
         card1=null;
         card2=null;
     } */
-        // Tillfällig lösning för att förenkla byggandet av Player-objekt i EditPlayersActivity
-    public Player(String name, String stakk, String pos, String kort1, String kort2){
-        this.name = name;
-        this.stakk = stakk;
-        this.pos = pos;
-        this.kort1 = kort1;
-        this.kort2 = kort2;
-        this.bet = 0;
-        this.prevBet = 0;
-        this.card1 = null;
-        this.card2 = null;
-    }
 
-    public String name() { return name; }
     public double stack() { return stack; }
     public double bet() { return bet; }
     public double prevBet() { return prevBet; }
     public void resetPrevBet() {
         this.prevBet = 0;
     }
-    public String stakk() { return stakk; }
-    public String pos() { return pos; }
-    public String kort1() { return kort1; }
-    public String kort2() { return kort2; }
+
 
     public Position position() { return position; }
     public Card card1() { return card1; }

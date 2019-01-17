@@ -9,9 +9,12 @@ public class Session {
     public List<Player> players;
     public String noOfPlayers;
     public List<String> communityCards;
+    public List<List<Street>> streets;
 
     private Session() { players = new ArrayList<>();
-                        communityCards = new ArrayList<>(); }
+                        communityCards = new ArrayList<>();
+                        streets = new ArrayList<>();
+    }
 
 
     public static Session getInstance() {

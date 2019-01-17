@@ -11,12 +11,28 @@ public class Street {
     protected double currentRaise;
     protected double stack;
     private Streets streets;
+    private String name;
+    private String action;
+    private String amount;
+    // Förenklad konstruktor för tillfällig implementation i appen pga tidsbrist
+    public Street(String name, String action, String amount) {
+        this.name = name;
+        this.action = action;
+        this.amount = amount;
+    }
+    public String name() { return name; }
+    public String action() { return action; }
+    public String amount() { return amount; }
+
+    public String toString() {
+        return name + " " + action + " " + amount;
+    }
 
     public enum Streets {
         PREFLOP,
         FLOP,
         TURN,
-        RIVER;
+        RIVER
     }
 
     public Street(Streets streets, double pot, ArrayList<Player> players){
@@ -24,10 +40,6 @@ public class Street {
         this.pot = pot;
         this.players = players;
         resetPrevBet();
-    }
-
-    public String toString() {
-        return streets + " ";
     }
 
     public static double pot(){ return pot; }

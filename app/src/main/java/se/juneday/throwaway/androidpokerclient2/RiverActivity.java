@@ -26,7 +26,7 @@ public class RiverActivity extends AppCompatActivity {
     private class PlayerAction {
         private Spinner playersSpinner = new Spinner(RiverActivity.this);
         private Spinner actions = new Spinner(RiverActivity.this);
-        private String[] actionStrings = new String[]{"Bet", "Post", "Call", "Fold", "Allin"};
+        private String[] actionStrings = new String[]{"Bet", "Raise", "Check", "Post", "Call", "Fold", "Allin"};
         private EditText amount = new EditText(RiverActivity.this);
         LinearLayout innerLayout = new LinearLayout(RiverActivity.this);
 
@@ -125,7 +125,7 @@ public class RiverActivity extends AppCompatActivity {
                     Street s = new Street(name, action, amount);
                     river.add(s);
                     for(Street st : river){
-                        Log.d("onNextClick()", " preflop list: " + st);
+                        Log.d("onNextClick()", " river list: " + st);
                     }
                 }
                 session.streets.add(river);

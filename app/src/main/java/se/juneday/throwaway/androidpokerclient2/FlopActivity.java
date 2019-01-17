@@ -21,7 +21,7 @@ public class FlopActivity extends AppCompatActivity {
     private class PlayerAction {
         private Spinner playersSpinner = new Spinner(FlopActivity.this);
         private Spinner actions = new Spinner(FlopActivity.this);
-        private String[] actionStrings = new String[]{"Bet", "Post", "Call", "Fold", "Allin"};
+        private String[] actionStrings = new String[]{"Bet", "Raise", "Check", "Post", "Call", "Fold", "Allin"};
         private EditText amount = new EditText(FlopActivity.this);
         LinearLayout innerLayout = new LinearLayout(FlopActivity.this);
 
@@ -117,7 +117,7 @@ public class FlopActivity extends AppCompatActivity {
                     Street s = new Street(name, action, amount);
                     flop.add(s);
                     for(Street st : flop){
-                        Log.d("onNextClick()", " preflop list: " + st);
+                        Log.d("onNextClick()", " flop list: " + st);
                     }
                 }
                 session.streets.add(flop);

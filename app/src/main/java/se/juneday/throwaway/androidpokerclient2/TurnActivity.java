@@ -26,7 +26,7 @@ public class TurnActivity extends AppCompatActivity {
     private class PlayerAction {
         private Spinner playersSpinner = new Spinner(TurnActivity.this);
         private Spinner actions = new Spinner(TurnActivity.this);
-        private String[] actionStrings = new String[]{"Bet", "Post", "Call", "Fold", "Allin"};
+        private String[] actionStrings = new String[]{"Bet", "Raise", "Check", "Post", "Call", "Fold", "Allin"};
         private EditText amount = new EditText(TurnActivity.this);
         LinearLayout innerLayout = new LinearLayout(TurnActivity.this);
 
@@ -131,7 +131,7 @@ public class TurnActivity extends AppCompatActivity {
                     Street s = new Street(name, action, amount);
                     turn.add(s);
                     for(Street st : turn){
-                        Log.d("onNextClick()", " preflop list: " + st);
+                        Log.d("onNextClick()", " turn list: " + st);
                     }
                 }
                 session.streets.add(turn);

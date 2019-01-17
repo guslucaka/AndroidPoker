@@ -19,7 +19,7 @@ public class PreflopActivity extends AppCompatActivity {
     private class PlayerAction {
         private Spinner playersSpinner = new Spinner(PreflopActivity.this);
         private Spinner actions = new Spinner(PreflopActivity.this);
-        private String[] actionStrings = new String[]{"Bet", "Post", "Call", "Fold", "Allin"};
+        private String[] actionStrings = new String[]{"Bet", "Raise", "Check", "Post", "Call", "Fold", "Allin"};
         private EditText amount = new EditText(PreflopActivity.this);
         LinearLayout innerLayout = new LinearLayout(PreflopActivity.this);
 

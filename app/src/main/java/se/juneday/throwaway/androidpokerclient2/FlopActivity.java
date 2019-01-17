@@ -56,10 +56,16 @@ public class FlopActivity extends AppCompatActivity {
     void initViews() {
         onNextClick();
         onPlusClick();
+
+        List<Player> players = Session.getInstance().players;
+        LinearLayout layout = findViewById(R.id.player_list);
+        layout.removeAllViews();
+        FlopActivity.PlayerAction pa = new FlopActivity.PlayerAction(players);
+        layout.addView(pa.innerLayout);
     }
 
     private void onPlusClick() {
-        final Button plusButton = findViewById(R.id.new_action_button);
+        final Button plusButton = findViewById(R.id.new_action_button2);
         plusButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

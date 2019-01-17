@@ -15,7 +15,6 @@ import java.util.List;
 
 public class FlopActivity extends AppCompatActivity {
 
-
     private class PlayerAction {
         private Spinner playersSpinner = new Spinner(FlopActivity.this);
         private Spinner actions = new Spinner(FlopActivity.this);
@@ -36,7 +35,6 @@ public class FlopActivity extends AppCompatActivity {
             innerLayout.addView(amount);
         }
     }
-
 
     static List<String> playersToNames(List<Player> players) {
         List<String> result = new ArrayList<>();
@@ -88,5 +86,3 @@ public class FlopActivity extends AppCompatActivity {
         });
     }
 }
-
-

@@ -1,7 +1,5 @@
 package se.juneday.throwaway.androidpokerclient2;
 
-import android.graphics.Color;
-import android.support.annotation.NonNull;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,8 +9,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
-import android.view.ViewGroup;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,19 +49,18 @@ public class PreflopActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_preflop);
         initViews();
-        }
+    }
 
-        void initViews(){
-            onNextClick();
-            onPlusClick();
+    void initViews() {
+        onNextClick();
+        onPlusClick();
 
         List<Player> players = Session.getInstance().players;
         LinearLayout layout = findViewById(R.id.player_list);
         layout.removeAllViews();
         PlayerAction pa = new PlayerAction(players);
         layout.addView(pa.innerLayout);
-        }
-
+    }
 
     private void onPlusClick() {
         final Button plusButton = findViewById(R.id.new_action_button);

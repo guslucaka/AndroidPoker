@@ -3,8 +3,11 @@ package se.juneday.throwaway.androidpokerclient2;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -37,6 +40,20 @@ public class MainActivity extends AppCompatActivity {
         newHandButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                Session session = Session.getInstance();
+
+                session.handInfo = null;
+                session.players.clear();
+                session.streets.clear();
+                session.communityCards.clear();
+                session.noOfPlayers = null;
+
+                Log.d("onNewHandClick()", "HandInfo: " + session.handInfo);
+                Log.d("onNewHandClick()", "playerList size: " + session.players.size());
+                Log.d("onNewHandClick()", "cardList size: " + session.communityCards.size());
+                Log.d("onNewHandClick()", "streetList size: " + session.streets.size());
+
                 Intent intent = new Intent(MainActivity.this, NewHandActivity.class);
                 startActivity(intent);
             }

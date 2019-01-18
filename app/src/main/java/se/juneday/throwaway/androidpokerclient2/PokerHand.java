@@ -13,8 +13,8 @@ public class PokerHand {
     public static List<String> communityCardList = new ArrayList<>();
 
     //Förenklad konstruktor så att den passar session-klassen, istället för tvärtom pga tidsbrist
-    public PokerHand(HandInfo handInfo, ArrayList<Player> playerList,
-                     ArrayList<List<Street>> listOfStreets, ArrayList<String> communityCardList){
+    public PokerHand(HandInfo handInfo, List<Player> playerList,
+                     List<List<Street>> listOfStreets, List<String> communityCardList){
         this.handInfo = handInfo;
         this.playerList = playerList;
         this.listOfStreets = listOfStreets;
@@ -23,7 +23,7 @@ public class PokerHand {
 
     @Override
     public String toString() {
-        return handInfo.toString() + "  " + playerList + "  " + listOfStreets;
+        return handInfo.toString() + "  " + playerList + "  " + listOfStreets + "  " + communityCardList;
     }
 /*
     public PokerHand(HandInfo handInfo, ArrayList<Player> playerList,

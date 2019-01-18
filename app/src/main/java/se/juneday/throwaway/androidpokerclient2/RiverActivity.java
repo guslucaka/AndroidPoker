@@ -143,6 +143,9 @@ public class RiverActivity extends AppCompatActivity {
                 for (List<Street> li : session.streets){
                     Log.d("onSaveHandClick()", " list of  streetlists: " + li);
                 }
+
+                PokerHand ph = new PokerHand(session.handInfo, session.players, session. streets, session.communityCards);
+                Log.d("onSaveHandClick()", "PokerHand-object: " + ph);
             }
         });
     }

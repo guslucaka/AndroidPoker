@@ -102,35 +102,46 @@ public class RiverActivity extends AppCompatActivity {
                 Intent intent = new Intent(RiverActivity.this, MainActivity.class);
                 startActivity(intent);
 
+                String flopCard5 = ((EditText)findViewById(R.id.card5_editText)).getText().toString();
+
                 Session session = Session.getInstance();
+
+                session.communityCards.add(flopCard5);
 
                 // linjära layouten i scrollview
                 LinearLayout layout = findViewById(R.id.player_list);
                 List<Street> river = new ArrayList<>();
-                Log.d("onNextClick()", " layout: " + layout);
+                Log.d("onSaveHandClick()", " layout: " + layout);
 
                 // loopa igenom alla i lin layout tillagda viewer
                 for (int i=0; i<layout.getChildCount(); i++) {
-                    Log.d("onNextClick()", " list item: " + i);
+                    Log.d("onSaveHandClick()", " list item: " + i);
                     // hämta ut i:te innerlayout
                     LinearLayout innerLayout = (LinearLayout) layout.getChildAt(i);
-                    Log.d("onNextClick()", " list item: " + innerLayout);
+                    Log.d("onSaveHandClick()", " list item: " + innerLayout);
                     // den tredje (dvs index 2) är ju en edittext, casta om och läs ut värdet
                     String name = ((Spinner) innerLayout.getChildAt(0)).getSelectedItem().toString();
-                    Log.d("onNextClick()", " list item: " + name);
+                    Log.d("onSaveHandClick()", " list item: " + name);
                     String action = ((Spinner) innerLayout.getChildAt(1)).getSelectedItem().toString();
-                    Log.d("onNextClick()", " list item: " + action);
+                    Log.d("onSaveHandClick()", " list item: " + action);
                     String amount = ((EditText) innerLayout.getChildAt(2)).getText().toString();
-                    Log.d("onNextClick()", " list item: " + amount);
+                    Log.d("onSaveHandClick()", " list item: " + amount);
                     Street s = new Street(name, action, amount);
                     river.add(s);
                     for(Street st : river){
-                        Log.d("onNextClick()", " river list: " + st);
+                        Log.d("onSaveHandClick()", " river list: " + st);
                     }
                 }
                 session.streets.add(river);
+                Log.d("onSaveHandClick()", "HandInfo: " + session.handInfo);
+                for (Player p : session.players) {
+                    Log.d("onSaveHandClick()", "PlayerList: " + p);
+                }
+                for (String s : session.communityCards) {
+                    Log.d("onSaveHandClick()", "CardList: " + s);
+                }
                 for (List<Street> li : session.streets){
-                    Log.d("onNextClick()", " list of  streetlists: " + li);
+                    Log.d("onSaveHandClick()", " list of  streetlists: " + li);
                 }
             }
         });

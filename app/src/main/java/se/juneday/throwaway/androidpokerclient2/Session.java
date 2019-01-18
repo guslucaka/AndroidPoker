@@ -7,7 +7,8 @@ public class Session {
     private static Session instance;
     public HandInfo handInfo;
     public List<Player> players;
-    public String noOfPlayers;
+    public String noOfPlayers; //Dennes uppgift är att hålla koll på hur många spelare som är med i
+                               //handen ifall man måste gå tillbaka till EditPlayers
     public List<String> communityCards;
     public List<List<Street>> streets;
 
